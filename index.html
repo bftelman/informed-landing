@@ -1,84 +1,335 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>InFormed — Forms &amp; Surveys</title>
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #0b0f17;
-        --card: #121826;
-        --text: #f3f4f6;
-        --muted: #9ca3af;
-        --accent: #3b82f6;
-        --accent-hover: #2563eb;
-        --border: rgba(255, 255, 255, 0.08);
-      }
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #f8fafc;
-          --card: #ffffff;
-          --text: #0f172a;
-          --muted: #475569;
-          --accent: #2563eb;
-          --accent-hover: #1d4ed8;
-          --border: rgba(15, 23, 42, 0.08);
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InFormed: Calm Forms, Surveys &amp; AI Insights</title>
+  <meta name="description" content="Design surveys with a clean three-pane builder, draft questions with the InFormed AI agent, and turn responses into clear velocity and completion insights." />
+  <meta property="og:title" content="InFormed: Calm Forms, Surveys &amp; AI Insights" />
+  <meta property="og:description" content="Forms that feel calm to build, and effortless to answer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://in-formed.tech/" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="icon" href="./assets/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./landing.css" />
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('informed.landing.theme'); } catch (e) {}
+      var initial = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand-link" href="#top" aria-label="InFormed home">
+        <img
+          class="brand-logo"
+          id="brandLogo"
+          src="./assets/logo-primary.svg"
+          data-light="./assets/logo-primary.svg"
+          data-dark="./assets/logo-white.svg"
+          alt="InFormed"
+        />
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+        </button>
+        <a class="btn btn--ghost" href="https://in-formed.app/login">Sign in</a>
+        <a class="btn btn--primary" href="https://in-formed.app">Open App</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="dot-status" aria-hidden="true"></span>
+            <span>Forms, conditional logic &amp; AI text analytics</span>
+          </div>
+          <h1 class="hero__title">Forms that feel <em>calm</em> to build, and effortless to answer.</h1>
+          <p class="hero__subtitle">
+            Design surveys with a clean three-pane builder, draft questions with the InFormed AI agent, and turn responses into clear velocity and completion insights.
+          </p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary btn--lg" href="https://in-formed.app">Start building free &rarr;</a>
+            <a class="btn btn--ghost btn--lg" href="#screens">See feature screens</a>
+          </div>
+        </div>
+
+        <div class="showcase">
+          <div class="browser-frame">
+            <div class="browser-frame__bar">
+              <div class="browser-frame__dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="browser-frame__url">in-formed.app/forms/customer-satisfaction-q4</div>
+              <span style="width: 42px;"></span>
+            </div>
+            <img
+              class="browser-frame__screen theme-img"
+              src="./assets/screens/builder-light.jpg"
+              data-light="./assets/screens/builder-light.jpg"
+              data-dark="./assets/screens/builder-fixed-cover-dark.jpg"
+              alt="InFormed visual form builder showing field library, live form canvas, and cover customization"
+            />
+          </div>
+
+          <div class="floating-pill">
+            <div class="floating-pill__icon" aria-hidden="true">&#10003;</div>
+            <div>
+              <div class="floating-pill__title">82.4% completion rate</div>
+              <div class="floating-pill__sub">1m 45s avg. cycle &middot; Live velocity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__eyebrow">Capabilities</div>
+          <h2 class="section__title">Everything you need to ask, collect, and understand.</h2>
+          <p class="section__desc">
+            Designed with editorial typography, pastel cover motifs, and focused workflows that stay out of your way.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="feature-card feature-card--sky">
+            <span class="feature-card__tag">01 / BUILDER</span>
+            <h3>Visual Form Builder</h3>
+            <p>
+              Compose forms with 11+ question types, mix-and-match pastel covers, and independent line-art illustrations. Preview desktop and mobile viewports side by side.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Short &amp; Long Text</span>
+              <span class="chip">Stars &amp; 0-10 Scale</span>
+              <span class="chip">File Upload</span>
+              <span class="chip">Sections</span>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--sage">
+            <span class="feature-card__tag">02 / LOGIC</span>
+            <h3>Conditional Logic</h3>
+            <p>
+              Keep surveys short and relevant. Show or hide follow-up questions dynamically based on previous answers so respondents only see what applies to them.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Branching rules</span>
+              <span class="chip">Show / Hide</span>
+              <span class="chip">Higher completion</span>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--peach">
+            <span class="feature-card__tag">03 / AI AGENT</span>
+            <h3>InFormed AI &amp; Text Analytics</h3>
+            <p>
+              Describe your goal to the built-in AI assistant to generate structured forms in seconds, or run AI text analytics across open-ended survey responses.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Prompt-to-form</span>
+              <span class="chip">In-context chat</span>
+              <span class="chip">Sentiment &amp; themes</span>
+            </div>
+          </article>
+
+          <article class="feature-card feature-card--lilac">
+            <span class="feature-card__tag">04 / INSIGHTS</span>
+            <h3>Real-Time Results &amp; Velocity</h3>
+            <p>
+              Track total and partial responses, completion rate, and average completion time. Inspect per-question distributions and searchable response tables.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Velocity charts</span>
+              <span class="chip">24H / 7D / 30D</span>
+              <span class="chip">Question breakdown</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="screens">
+      <div class="container">
+        <div class="section__head">
+          <div class="section__eyebrow">Feature Screens</div>
+          <h2 class="section__title">From templates and AI to live results and alerts.</h2>
+          <p class="section__desc">Real screens from the InFormed workspace, adapting automatically to light and dark mode.</p>
+        </div>
+
+        <div class="spotlight-list">
+          <article class="spotlight">
+            <div class="spotlight__copy">
+              <span class="feature-card__tag">RESULTS &amp; ANALYTICS</span>
+              <h3>Clear completion metrics and response velocity</h3>
+              <p>Monitor total and partial submissions, completion rates, and average completion time. Drill down into per-question distributions without exporting spreadsheets.</p>
+              <div class="chip-row">
+                <span class="chip">Velocity chart</span>
+                <span class="chip">24H / 7D / 30D</span>
+                <span class="chip">Question breakdown</span>
+              </div>
+            </div>
+            <div class="spotlight__media">
+              <img
+                class="theme-img"
+                src="./assets/screens/analytics-light.jpg"
+                data-light="./assets/screens/analytics-light.jpg"
+                data-dark="./assets/screens/analytics-dark.jpg"
+                alt="InFormed Results analytics screen"
+              />
+            </div>
+          </article>
+
+          <article class="spotlight spotlight--reverse">
+            <div class="spotlight__copy">
+              <span class="feature-card__tag">TEMPLATES LIBRARY</span>
+              <h3>Start fast with Community Templates</h3>
+              <p>Browse CSAT, Onboarding, NPS, and Conference Feedback templates with custom pastel covers, or publish your own form for others to reuse.</p>
+              <div class="chip-row">
+                <span class="chip">CSAT &amp; NPS</span>
+                <span class="chip">1-click clone</span>
+                <span class="chip">Public sharing</span>
+              </div>
+            </div>
+            <div class="spotlight__media">
+              <img
+                class="theme-img"
+                src="./assets/screens/templates-light.jpg"
+                data-light="./assets/screens/templates-light.jpg"
+                data-dark="./assets/screens/templates-dark.jpg"
+                alt="InFormed Community Templates library"
+              />
+            </div>
+          </article>
+
+          <article class="spotlight">
+            <div class="spotlight__copy">
+              <span class="feature-card__tag">INFORMED AI AGENT</span>
+              <h3>Draft forms and conditional logic in seconds</h3>
+              <p>Describe the survey you need in plain English. The InFormed Agent generates structured fields, rating scales, and conditional follow-ups right inside your workspace.</p>
+              <div class="chip-row">
+                <span class="chip">Prompt-to-form</span>
+                <span class="chip">In-context chat</span>
+                <span class="chip">Text analytics</span>
+              </div>
+            </div>
+            <div class="spotlight__media">
+              <img
+                class="theme-img"
+                src="./assets/screens/ai-agent-light.jpg"
+                data-light="./assets/screens/ai-agent-light.jpg"
+                data-dark="./assets/screens/ai-agent-dark.jpg"
+                alt="InFormed AI Agent open inside the workspace"
+              />
+            </div>
+          </article>
+
+          <article class="spotlight spotlight--reverse">
+            <div class="spotlight__copy">
+              <span class="feature-card__tag">NOTIFICATIONS MODULE</span>
+              <h3>Real-time alerts across Email, Telegram, and Push</h3>
+              <p>Connect your primary email, pair the Telegram bot in seconds, and configure instant submission triggers or AI summary alerts from one screen.</p>
+              <div class="chip-row">
+                <span class="chip">Email summaries</span>
+                <span class="chip">Telegram bot</span>
+                <span class="chip">Browser push</span>
+              </div>
+            </div>
+            <div class="spotlight__media">
+              <img
+                class="theme-img"
+                src="./assets/screens/notifications-light.jpg"
+                data-light="./assets/screens/notifications-light.jpg"
+                data-dark="./assets/screens/notifications-dark.jpg"
+                alt="InFormed Notifications module showing Email, Telegram Bot, Browser Push, and Event Triggers"
+              />
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h2>Ready to ask better questions?</h2>
+            <p>Launch your first form in minutes on InFormed. Free to start, calm by design.</p>
+          </div>
+          <a class="btn btn--primary btn--lg" href="https://in-formed.app">Open InFormed &rarr;</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__meta">
+        &copy; 2026 InFormed. All rights reserved.
+      </div>
+      <div class="site-footer__links">
+        <a href="https://in-formed.app/privacy">Privacy Policy</a>
+        <a href="https://in-formed.app/terms">Terms of Service</a>
+        <a href="https://www.instagram.com/in.formed.app/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var logo = document.getElementById('brandLogo');
+      var imgs = document.querySelectorAll('.theme-img');
+      var toggle = document.getElementById('themeToggle');
+      var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        if (logo) {
+          logo.src = logo.getAttribute(theme === 'dark' ? 'data-dark' : 'data-light');
         }
+        imgs.forEach(function (img) {
+          var nextSrc = img.getAttribute(theme === 'dark' ? 'data-dark' : 'data-light');
+          if (nextSrc) img.src = nextSrc;
+        });
       }
-      * {
-        box-sizing: border-box;
+
+      applyTheme(root.getAttribute('data-theme') || 'light');
+
+      if (mq && mq.addEventListener) {
+        mq.addEventListener('change', function (e) {
+          var saved = null;
+          try { saved = localStorage.getItem('informed.landing.theme'); } catch (err) {}
+          if (!saved) applyTheme(e.matches ? 'dark' : 'light');
+        });
       }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: var(--bg);
-        color: var(--text);
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          try { localStorage.setItem('informed.landing.theme', next); } catch (err) {}
+          applyTheme(next);
+        });
       }
-      main {
-        max-width: 560px;
-        width: 100%;
-        padding: 48px 36px;
-        border-radius: 16px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        text-align: center;
-      }
-      h1 {
-        margin: 0 0 12px;
-        font-size: 2.25rem;
-        letter-spacing: -0.02em;
-      }
-      p {
-        margin: 0 0 28px;
-        color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.6;
-      }
-      a.cta {
-        display: inline-block;
-        padding: 14px 28px;
-        border-radius: 10px;
-        background: var(--accent);
-        color: #ffffff;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.15s ease;
-      }
-      a.cta:hover {
-        background: var(--accent-hover);
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>InFormed</h1>
-      <p>Build forms, collect responses, and analyze insights in minutes.</p>
-      <a class="cta" href="https://in-formed.app">Open App</a>
-    </main>
-  </body>
+    })();
+  </script>
+</body>
 </html>
