@@ -719,3 +719,132 @@ img { display: block; max-width: 100%; }
     white-space: nowrap;
   }
 }
+
+
+/* ============ Holiday: GTA VI ("Vice") ============ */
+[data-holiday="gta-vi"] {
+  --sky:         #f28db8;
+  --sky-soft:    #fde8f2;
+  --sky-strong:  #b82166;
+  --sage:        #5cd6c8;
+  --sage-soft:   #e0f7f4;
+  --sage-strong: #0c6e6d;
+  --peach:       #ff9e6d;
+  --peach-soft:  #ffece0;
+  --peach-strong:#c44a16;
+  --lilac:       #c9a7eb;
+  --butter:      #f7c95c;
+
+  --brand-emerald: #0c6e6d;
+  --brand-emerald-bright: #2dd4bf;
+  --brand-emerald-deep: #064e3b;
+
+  --bg:          #fdf6f0;
+  --bg-deep:     #f5e9e0;
+  --surface:     #fffcf9;
+  --surface-2:   #faf0ea;
+  --surface-3:   #f2e3da;
+  --border:      #e5d2c9;
+  --border-strong: #c8ada3;
+  --ink:         #22152b;
+  --ink-2:       #463250;
+  --ink-muted:   #6c5374;
+  --ink-faint:   #7d6484;
+
+  --accent:      var(--sky-strong);
+  --accent-bg:   var(--sky-soft);
+}
+
+[data-theme="dark"][data-holiday="gta-vi"] {
+  --sky:         #e84c9b;
+  --sky-soft:    #3a1935;
+  --sky-strong:  #ff77b7;
+  --sage:        #2dd4bf;
+  --sage-soft:   #143338;
+  --sage-strong: #5eead4;
+  --peach:       #fb923c;
+  --peach-soft:  #3a2216;
+  --peach-strong:#fdba74;
+  --lilac:       #b58df2;
+  --butter:      #fcd34d;
+
+  --bg:          #120d1d;
+  --bg-deep:     #0b0713;
+  --surface:     #1b142b;
+  --surface-2:   #231b37;
+  --surface-3:   #2d2345;
+  --border:      #3d305c;
+  --border-strong: #5b4984;
+  --ink:         #f8f1ff;
+  --ink-2:       #dfd2f0;
+  --ink-muted:   #b3a0cc;
+  --ink-faint:   #8f7ba8;
+
+  --accent:      var(--sky-strong);
+  --accent-bg:   var(--sky-soft);
+}
+
+[data-holiday="gta-vi"] .hero {
+  background:
+    radial-gradient(circle, var(--border-strong) 1px, transparent 1px) 0 0 / 16px 16px,
+    radial-gradient(ellipse 65% 45% at 80% 10%, color-mix(in srgb, var(--peach) 16%, transparent), transparent 65%),
+    radial-gradient(ellipse 55% 45% at 15% 20%, color-mix(in srgb, var(--sky) 14%, transparent), transparent 65%),
+    linear-gradient(180deg, color-mix(in srgb, var(--peach-soft) 35%, var(--bg)) 0%, var(--bg) 78%);
+}
+
+[data-holiday="gta-vi"] .hero__title em {
+  background: linear-gradient(110deg, var(--peach-strong) 0%, #db2777 52%, var(--sky-strong) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme="dark"][data-holiday="gta-vi"] .hero__title em {
+  background: linear-gradient(110deg, var(--butter) 0%, var(--lilac) 50%, var(--sky-strong) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-holiday="gta-vi"] .hero,
+[data-holiday="gta-vi"] .cta-band {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-holiday="gta-vi"] .hero::after,
+[data-holiday="gta-vi"] .cta-band::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: var(--sage-strong);
+  mask: url('./assets/holidays/gta-vi/palm-corner.svg') top right / contain no-repeat;
+  opacity: .38;
+  pointer-events: none;
+}
+
+[data-holiday="gta-vi"] .hero::before {
+  content: '';
+  position: absolute;
+  top: 72px;
+  left: 32px;
+  width: 140px;
+  height: 44px;
+  background: var(--peach-strong);
+  mask: url('./assets/holidays/gta-vi/sunset-birds.svg') center / contain no-repeat;
+  opacity: .48;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  [data-holiday="gta-vi"] .hero::before { display: none; }
+}
+
+@media (forced-colors: active) {
+  [data-holiday="gta-vi"] .hero::after,
+  [data-holiday="gta-vi"] .hero::before,
+  [data-holiday="gta-vi"] .cta-band::after { display: none; }
+}
